@@ -53,7 +53,7 @@ In Python3 authenticating with named profiles:
       profile_name="<profile-name>",
    )
    session = auth.profile()
-   client = session.client("<client-name>")
+   client = session.client("<service-name>")
 
 In Python3 authenticating with IAM access key credentials:
 
@@ -66,7 +66,7 @@ In Python3 authenticating with IAM access key credentials:
       secret_access_key="<secret-access-key>",
    )
    session = auth.iam()
-   client = session.client("<client-name>")
+   client = session.client("<service-name>")
 
 In Python3 authenticating with SSO:
 
@@ -77,10 +77,30 @@ In Python3 authenticating with SSO:
    auth = aws_authenticator.AWSAuthenticator(
       sso_url="<sso-url>",
       sso_role_name="<sso-role-name>",
-      ssp_account_id="<ssp-account-id>",
+      sso_account_id="<sso-account-id>",
    )
    session = auth.sso()
-   client = session.client("<client-name>")
+   client = session.client("<service-name>")
+
+Testing Examples
+----------------
+
+Testing SSO-based login in Python3:
+
+.. code-block:: PYTHON
+
+   import aws_authenticator
+
+   auth = aws_authenticator.AWSAuthenticator(
+      sso_url="<sso-url>",
+      sso_role_name="<sso-role-name>",
+      sso_account_id="<sso-account-id>",
+   )
+   session = auth.sso()
+   client = session.client("sts")
+
+   response = client.get_caller_identity()
+   print(response)
 
 Testing profile-based login as a script in BASH:
 

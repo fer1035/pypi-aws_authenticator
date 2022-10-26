@@ -3,7 +3,7 @@ import argparse
 import boto3
 
 
-__version__ = "2022.10.1.2"
+__version__ = "2022.10.1.3"
 
 
 class AWSAuthenticator:
@@ -76,7 +76,7 @@ def get_params():
         usage="%(prog)s [options]",
     )
     myparser.add_argument(
-        "-v", "--version", action="version", version="%(prog)s 2122.10.1.2"
+        "-v", "--version", action="version", version="%(prog)s 2022.10.1.3"
     )
     myparser.add_argument(
         "-m",
